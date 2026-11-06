@@ -19,4 +19,4 @@ Preparation used a pre-existing local environment and `OMP_NUM_THREADS=1`, `MKL_
 
 ## Publication state
 
-The local Git snapshot is prepared. Remote repository creation and upload have not been completed: the command-line GitHub login was invalid, and the browser-origin approval was declined. No release tag, Zenodo deposit, DOI or repository-wide licence is claimed.
+The local Git snapshot is prepared. Remote repository creation and upload have not been completed. After the author refreshed the command-line login, a direct API diagnostic showed that this agent's command environment blocks outbound sockets to GitHub; the earlier `gh auth status` message was therefore not sufficient evidence of an invalid credential. The connected GitHub plugin identifies the account successfully but does not expose repository creation. Browser-origin approval was previously declined. No release tag, Zenodo deposit, DOI or repository-wide licence is claimed.
