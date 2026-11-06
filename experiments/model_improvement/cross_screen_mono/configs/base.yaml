@@ -1,0 +1,16 @@
+protocol: CrossScreenMono-v1
+protocol_document: docs/CROSS_SCREEN_MONO_V1_PROTOCOL.md
+claim_scope: engineering_pilot_no_performance_ranking
+# frozen development sample (same keys as configs/model_improvement/algorithm_search_v1/screen_b1.yaml)
+reference_run: runs/model_improvement/comparator_gpu_v2
+data_root: ../bisurfgnn
+benchmark_config: configs/benchmark_bisurf_unclipped.yaml
+cell_config: configs/cell_context.yaml
+fold: 0
+sampling_seed: 41
+sampling_salt: model-comparator-gpu-v2
+preserve_partner_cell_support: true
+train_max_points: 18000
+validation_max_points: 9000
+# protocol section 2: stop when fewer than 80% of validation points are covered
+minimum_validation_coverage: 0.80

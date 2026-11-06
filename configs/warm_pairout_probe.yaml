@@ -1,0 +1,20 @@
+project_root: ..
+
+source_shard_dir: data/processed/one_new_scaffold_benchmark/learned_point_shards
+output_dir: data/processed/warm_pairout_development
+
+protocol: WarmPairOutDevelopment-v1
+source_protocol: OneNewScaffoldAnchored-v1
+endpoint: clipped_PERCENTGROWTHNOTZ_over_100
+endpoint_decision_status: provisional_engineering
+
+# This is a development discriminator. It reuses only the already-authorized
+# train and validation response shards; the physical test shards remain sealed.
+base_folds: [0, 1, 2, 3, 4]
+pair_bins: 5
+validation_bin: 0
+split_seed: 41
+
+# Validation is exact-pair cold but otherwise warm: both exact drugs, the cell,
+# and each exact drug-cell context must be present in warm training.
+require_drug_cell_seen: true

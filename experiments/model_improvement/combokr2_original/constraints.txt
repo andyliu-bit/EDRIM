@@ -1,0 +1,27 @@
+# Pins for the comboKR 2.0 original-setting reproduction image.
+# Author pins (README / environment.yml / requirements.txt at comboKR2.0 commit 0e26676):
+#   python 3.9, numpy==1.26.4 (# RLScore), scipy==1.13.1 (# RLScore), scikit-learn>=1.5.2,
+#   torch>=2.4.1, synergy==0.5.1, RLScore 0.8.2a0 (GitHub master, not on PyPI).
+# The lowest admissible version is chosen wherever the author gives only a lower bound.
+numpy==1.26.4
+scipy==1.13.1
+scikit-learn==1.5.2
+synergy==0.5.1
+Cython==0.29.37
+setuptools==69.5.1
+wheel==0.43.0
+# torch 2.4.1 runtime dependencies (from PyPI)
+filelock==3.16.1
+typing-extensions==4.12.2
+sympy==1.13.3
+networkx==3.2.1
+jinja2==3.1.4
+fsspec==2024.9.0
+# Not pinned by the author; needed by the author code (pandas pickles, matplotlib import)
+# or by the input-kernel reconstruction (rdkit for MACCS).
+# pandas 1.5.3: the Zenodo ALMANAC BRAID DataFrames were pickled with pandas<2 (Int64Index).
+pandas==1.5.3
+matplotlib==3.9.2
+rdkit==2023.9.6
+# xlrd: reads the CellMiner RNA-seq .xls (OLE2) for the cell-line kernel reconstruction.
+xlrd==2.0.1

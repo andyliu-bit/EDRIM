@@ -1,0 +1,60 @@
+# Parameter-matched IndependentPooledGNN Phase A on the D1 unclipped endpoint.
+#
+# Identical to configs/benchmark_independent_gnn.yaml except for the source
+# records, the output locations, and the endpoint declaration. The architecture,
+# parameter-match target, optimisation budget, seeds, and Go/No-Go rule are
+# unchanged so the rerun is comparable to the clipped-endpoint result.
+#
+# Evidence and reasoning: docs/ENDPOINT_DECISION.md.
+
+project_root: ..
+
+nci_processed_dir: data/processed/nci_almanac_unclipped
+cell_processed_dir: data/processed/cellminer
+output_dir: data/processed/one_new_scaffold_benchmark_unclipped
+runs_dir: runs/one_new_scaffold_unclipped
+
+protocol: OneNewScaffoldAnchored-v1
+information_setting: observed_monotherapy_anchored
+endpoint: unclipped_PERCENTGROWTHNOTZ_over_100
+endpoint_decision_status: frozen_d1
+
+folds: 5
+validation_offset: 1
+split_seed: 41
+similarity_threshold: 0.70
+fingerprint_radius: 2
+fingerprint_bits: 2048
+
+# The largest recorded value across responses and monotherapy anchors on this
+# release is 2.2638. The declared bound keeps a unit error (a forgotten division
+# by 100) rejected while admitting the untruncated ratio.
+response_upper_bound: 3.0
+
+independent_graph:
+  reference_mode: observed_hsa
+
+  # Hidden width 171 yields 2,024,663 parameters on the frozen 62-channel
+  # molecular / 53-channel cell graphs: a 0.35% gap from the 2,031,839-trainable-
+  # Morgan/Hallmark control.
+  hidden_dim: 171
+  graph_layers: 2
+  dose_frequencies: 4
+  dropout: 0.10
+  parameter_match_target: 2031839
+  max_parameter_relative_gap: 0.02
+
+  batch_surfaces: 128
+  evaluation_batch_points: 8192
+  max_epochs: 200
+  min_epochs: 10
+  patience: 20
+  min_delta: 0.00001
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  gradient_clip: 1.0
+  residual_shrinkage: 0.0
+  seeds: [41, 42, 43]
+
+  go_relative_improvement: 0.05
+  go_required_folds: 4

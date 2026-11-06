@@ -1,0 +1,43 @@
+protocol_version: common_decoder_factorial_development_v1
+benchmark_config: configs/audit_revision/bisurf_mono_v2.yaml
+capacity_design: constant_width_not_parameter_matched
+endpoint: unclipped_PERCENTGROWTHNOTZ_over_100
+model:
+  hidden_dim: 136
+  graph_layers: 2
+  attention_heads: 4
+  dose_frequencies: 4
+  dropout: 0.10
+  monotherapy_upper_bound: 3.0
+variants:
+  - pooled__concat
+  - pooled__gate
+  - bixt__concat
+  - bixt__gate
+  - cross_attention__concat
+  - cross_attention__gate
+training:
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  gradient_clip: 1.0
+  residual_shrinkage: 0.0
+  min_delta: 0.00001
+  batch_surfaces: 128
+  evaluation_batch_points: 512
+smoke:
+  fold: 0
+  seed: 41
+  max_epochs: 3
+  train_max_points: 900
+  validation_max_points: 1800
+  group_order_salt: P1-v1
+  decision_use: forbidden
+formal_development_plan:
+  status: pending_simple_controls_and_runner_review
+  folds: [0, 1, 2, 3, 4]
+  seeds: [41, 42, 43]
+  max_epochs: 200
+  min_epochs: 10
+  patience: 20
+  evaluation_batch_points: 8192
+  initial_candidate_epoch: -1

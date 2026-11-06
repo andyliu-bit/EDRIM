@@ -1,0 +1,16 @@
+protocol: InputPathDiagnostic-v1
+reference_run: runs/model_improvement/fingerprint_fusion_v1
+seeds: [41, 42, 43, 44, 45]
+permutation_seeds: [20261004, 20261005, 20261006]
+conditions: [drug_structure, cell_context, decoder_monotherapy, decoder_dose]
+device: cuda
+threads: 2
+evaluation_batch_size: 256
+max_wall_seconds: 600
+scope: fixed_development_checkpoints_inference_only
+# Each condition shuffles one input path while the observed anchor and output
+# dose gate remain unchanged. Drug/cell maps are global across all points;
+# decoder monotherapy/dose pairs are permuted jointly across validation rows.
+# Wrong input combinations can be out of distribution: sensitivity is not a
+# causal effect, a retraining ablation, or proof of a biological mechanism.
+# Five checkpoint seeds x three maps; maps are not independent training seeds.

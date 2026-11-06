@@ -1,0 +1,61 @@
+protocol: ObsCond-v1-preflight
+claim_scope: development_evidence_no_confirmation
+reference_run: C:/LHZ/research/bisurfgnn-model-experiments/runs/model_improvement/comparator_gpu_v2
+data_root: C:/LHZ/research/bisurfgnn
+benchmark_config: configs/benchmark_bisurf_unclipped.yaml
+cell_config: configs/cell_context.yaml
+fold: 0
+sampling_seed: 41
+sampling_salt: model-comparator-gpu-v2
+preserve_partner_cell_support: true
+train_max_points: 18000
+validation_max_points: 9000
+device: cuda
+threads: 2
+oof_folds: 4
+expected_view_sha256:
+  train_k1: 7cb1a363141054393ee22b8737eab873695194995e30509c7efeab1d4911db9a
+  validation_k1: 59d368144c7988023677ffb567742346323d481bc7e0b17e499a0eb9358378f3
+  train_k0: 4d9893b150239ef1d39e63e67e7bf075207b93e8841410a45a04a12be1e91aa7
+  validation_k0: e84c19cb3c464975b6d1456dfd993474e0784245adce8ccfc1f49b0e84808e8d
+seeds:
+- 41
+budgets:
+- 1
+repeat: true
+pipelines:
+- OC_gnn_r1
+- OC_morgan_r1
+obs:
+  r1:
+    layers: 2
+    heads: 4
+    prior_steps: 300
+    prior_batch: 512
+    prior_lr: 0.001
+    adapt_steps: 300
+    adapt_lr: 0.001
+    joint_steps: 300
+    joint_lr: 0.0002
+    batch_surfaces: 64
+    eval_every: 100
+    aux_weight: 1.0
+    hidden: 64
+    dropout: 0.1
+    weight_decay: 0.0001
+  r2:
+    layers: 2
+    heads: 4
+    prior_steps: 300
+    prior_batch: 512
+    prior_lr: 0.001
+    adapt_steps: 300
+    adapt_lr: 0.001
+    joint_steps: 300
+    joint_lr: 0.0002
+    batch_surfaces: 64
+    eval_every: 100
+    aux_weight: 1.0
+    hidden: 128
+    dropout: 0.3
+    weight_decay: 0.001

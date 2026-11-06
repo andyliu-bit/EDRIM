@@ -1,0 +1,30 @@
+dataset_release: NCI-ALMANAC-Nov2017
+raw_dir: data/raw/nci_almanac
+processed_dir: data/processed/nci_almanac
+source_manifest: data/raw_manifests/nci_almanac.json
+chunk_size: 250000
+
+response:
+  field: PERCENTGROWTHNOTZ
+  divide_by: 100.0
+  clip_min: 0.0
+  clip_max: 1.0
+
+dose:
+  accepted_units: [M]
+  model_reference_molar: 1.0e-12
+
+structure:
+  reject_ambiguous_multicomponent: false
+  canonicalize_tautomer: true
+  preserve_formal_charge: true
+  max_heavy_atoms: 256
+
+real_smoke:
+  max_surfaces: 24
+  seed: 23
+  hidden_dim: 32
+  graph_layers: 2
+  attention_heads: 4
+  dose_frequencies: 4
+

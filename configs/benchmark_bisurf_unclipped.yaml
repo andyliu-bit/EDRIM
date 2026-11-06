@@ -1,0 +1,61 @@
+# Full BiSurfGNN Phase A on the D1 unclipped endpoint.
+#
+# Same frozen cohort, shards, anchor, optimisation budget, seeds and capacity
+# band as configs/benchmark_independent_gnn_unclipped.yaml. The only change is
+# the architecture: symmetric BiXT atom-level exchange plus the context gate and
+# the continuous dose decoder, i.e. the model the pooled graph control was built
+# to be compared against.
+#
+# There is deliberately no Phase B entrypoint. This is validation selection only.
+
+project_root: ..
+
+nci_processed_dir: data/processed/nci_almanac_unclipped
+cell_processed_dir: data/processed/cellminer
+output_dir: data/processed/one_new_scaffold_benchmark_unclipped
+runs_dir: runs/one_new_scaffold_unclipped
+
+protocol: OneNewScaffoldAnchored-v1
+information_setting: observed_monotherapy_anchored
+endpoint: unclipped_PERCENTGROWTHNOTZ_over_100
+endpoint_decision_status: frozen_d1
+
+folds: 5
+validation_offset: 1
+split_seed: 41
+similarity_threshold: 0.70
+fingerprint_radius: 2
+fingerprint_bits: 2048
+
+response_upper_bound: 3.0
+
+independent_graph:
+  architecture: compact_bisurf_gnn
+  reference_mode: observed_hsa
+
+  # Hidden width 136 yields 2,049,542 trainable parameters against the frozen
+  # 2,031,839-parameter Morgan control, a 0.87% gap, inside the same matched
+  # band the pooled graph control (2,024,663, -0.35%) sits in. 136 is divisible
+  # by the 4 attention heads, which symmetric BiXT requires.
+  hidden_dim: 136
+  attention_heads: 4
+  graph_layers: 2
+  dose_frequencies: 4
+  dropout: 0.10
+  parameter_match_target: 2031839
+  max_parameter_relative_gap: 0.02
+
+  batch_surfaces: 128
+  evaluation_batch_points: 8192
+  max_epochs: 200
+  min_epochs: 10
+  patience: 20
+  min_delta: 0.00001
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  gradient_clip: 1.0
+  residual_shrinkage: 0.0
+  seeds: [41, 42, 43]
+
+  go_relative_improvement: 0.05
+  go_required_folds: 4

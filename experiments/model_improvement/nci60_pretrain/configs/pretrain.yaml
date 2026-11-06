@@ -1,0 +1,22 @@
+protocol: NCI60-Pretrain-v1-pretrain
+device: cuda
+threads: 2
+seed: 20261012
+sparse_mono_config: configs/model_improvement/sparse_mono_v1/stab.yaml
+points: data/interim/nci60_pretrain_v1/nci60_points.parquet
+graphs: data/interim/nci60_pretrain_v1/nci60_graphs.pt
+compounds: data/interim/nci60_pretrain_v1/nci60_compounds.parquet
+exclusion_list: runs/model_improvement/nci60_pretrain_v1/freeze/exclusion_list.csv
+exclusion_freeze: runs/model_improvement/nci60_pretrain_v1/freeze/exclusion_freeze.json
+exclusion_sha256: 8551a8083d178072c18a25a3f7f479b86ffd01906ee8ac3a51976801d17fc79e
+holdout_salt: NCI60-Pretrain-v1|pretrain-holdout
+holdout_modulus: 20
+schedule:
+  eval_every: 2000
+  patience_evals: 10
+  min_delta: 1.0e-05
+  time_limit_minutes: 80
+  max_steps: 120000
+points_sha256: a0f8052c66223d6e62660ed2e5fa4572fa58270b7b14854031c4b33cc0b27e10
+graphs_sha256: f005788cd078a992ef1f19c5d804f90d2e32531c336ca64b5e77a941333f91da
+compounds_sha256: 41983cd94f292ced71990b91ceee37c3ca9d4fa39c07f3f616ecb1e21a5a6929

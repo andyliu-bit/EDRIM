@@ -1,0 +1,31 @@
+# PublicSplitGate-v1 (docs/PUBLIC_SPLIT_GATE_V1_PROTOCOL.md). Training and XGBoost settings are the frozen
+# AlgorithmSearch-v1 values (experiments/model_improvement/cross_screen_mono/configs/gpu.yaml); the only change
+# is the epoch schedule (max_epochs + patience + wall cap), registered in the launch card section 4.
+protocol: PublicSplitGate-v1
+device: cuda
+threads: 2
+wall_cap_seconds: 10800
+training:
+  max_epochs: 20
+  patience: 4
+  mono_epochs: 0
+  batch_size: 512
+  evaluation_batch_size: 256
+  batch_surfaces: 128
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  gradient_clip: 1.0
+  min_delta: 1.0e-05
+xgboost:
+  learning_rate: 0.03
+  max_trees: 3000
+  eval_every: 50
+  subsample: 0.8
+  colsample: 0.8
+  drug_pca: 16
+  cell_pca: 16
+  threads: 6
+timing:
+  fraction: 0.05
+  subset_seed: 20261013
+  minimum_epochs: 8

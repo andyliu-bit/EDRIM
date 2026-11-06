@@ -1,0 +1,97 @@
+protocol: NumericSurface-v1-preflight_full
+protocol_document: docs/NUMERIC_SURFACE_V1_PROTOCOL.md
+claim_scope: engineering_pilot_no_performance_ranking
+reference_run: C:/LHZ/research/bisurfgnn-model-experiments/runs/model_improvement/comparator_gpu_v2
+data_root: C:/LHZ/research/bisurfgnn
+benchmark_config: configs/benchmark_bisurf_unclipped.yaml
+cell_config: configs/cell_context.yaml
+fold: 0
+seeds:
+- 41
+sampling_seed: 41
+sampling_salt: model-comparator-gpu-v2
+preserve_partner_cell_support: true
+train_max_points: 18000
+validation_max_points: 9000
+device: cuda
+threads: 2
+max_wall_seconds: 10800
+training:
+  epochs: 0
+  mono_epochs: 0
+  batch_size: 512
+  evaluation_batch_size: 256
+  batch_surfaces: 128
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  gradient_clip: 1.0
+  min_delta: 1.0e-05
+numeric_arch:
+  ple:
+    d_embedding: 16
+    arm_width: 128
+    width: 256
+    blocks: 3
+    dropout: 0.1
+  tabm:
+    d_embedding: 16
+    k: 32
+    width: 256
+    blocks: 2
+    dropout: 0.1
+numeric_opt:
+  ple:
+    o1:
+      lr: 0.001
+      weight_decay: 0.0001
+      batch_surfaces: 64
+      gradient_clip: 1.0
+      eval_every: 100
+      steps: 600
+    o2:
+      lr: 0.0003
+      weight_decay: 0.0001
+      batch_surfaces: 64
+      gradient_clip: 1.0
+      eval_every: 100
+      steps: 0
+  tabm:
+    o1:
+      lr: 0.001
+      weight_decay: 0.0001
+      batch_surfaces: 64
+      gradient_clip: 1.0
+      eval_every: 100
+      steps: 0
+    o2:
+      lr: 0.0003
+      weight_decay: 0.0001
+      batch_surfaces: 64
+      gradient_clip: 1.0
+      eval_every: 100
+      steps: 0
+graph:
+  hidden: 64
+  layers: 2
+  dropout: 0.1
+stage2:
+  lr: 0.001
+  weight_decay: 0.0001
+  batch_surfaces: 64
+  gradient_clip: 1.0
+  eval_every: 100
+  steps: 300
+  crossfit_folds: 4
+stage3:
+  lr: 0.0001
+  weight_decay: 0.0001
+  batch_surfaces: 64
+  gradient_clip: 1.0
+  eval_every: 100
+  steps: 200
+numeric_source_runs:
+  ple_o1: runs/model_improvement/preflight_num
+models:
+- bisurf_numsurf_ple_o1
+- bisurf_numsurf_ple_o1_cf
+report_prefix: numsurf_v1_preflight_full

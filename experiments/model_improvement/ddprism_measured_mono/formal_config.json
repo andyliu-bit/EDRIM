@@ -1,0 +1,39 @@
+{
+ "name": "DDPRiSM-MeasuredMono-v1 formal validation run (split-1 training, split-2 evaluation only)",
+ "seed": 41,
+ "device": "cuda",
+ "max_wall_hours": 8,
+ "combo": {
+  "batch_size": 1024,
+  "learning_rate": 0.01,
+  "max_epochs": 1000,
+  "threshold": 0.0005,
+  "patience_lr": 10,
+  "patience_es": 20,
+  "lr_factor": 0.1,
+  "alpha": 1.0,
+  "beta": 0.5,
+  "gamma": 0.75,
+  "precision": 2,
+  "swap_augment": true
+ },
+ "mono": {
+  "batch_size": 1024,
+  "learning_rate": 0.01,
+  "max_epochs": 1000,
+  "threshold": 0.0005,
+  "patience_lr": 10,
+  "patience_es": 20,
+  "lr_factor": 0.1,
+  "alpha": 1.0,
+  "beta": 0.5,
+  "gamma": 0.75,
+  "precision": 2,
+  "internal_val_fraction": 0.125
+ },
+ "hyperparameter_sources": {
+  "combo": "authors' notebook 04_CombinationTherapyModel_Training.ipynb (commit 8d9c5d5): batch 1024, AdamW lr 0.01 with torch defaults otherwise (weight decay 0.01), up to 1000 epochs, threshold 0.0005, LR x0.1 after 10 epochs without improvement, early stop after 20, CustomLoss alpha 1 / beta 0.5 / gamma 0.75, precision 2, training rows doubled with swapped drug order, best epoch = minimum validation loss",
+  "mono": "RECONSTRUCTED: notebooks 02/03 are not cached locally; the notebook-04 recipe is reused, with a random 7/8 vs 1/8 split of the split-1 monotherapy anchors as in notebook 04's TrainVal split",
+  "max_wall_hours": "project guard only (not an author setting); reaching it is recorded as stopped_by = wall_limit"
+ }
+}

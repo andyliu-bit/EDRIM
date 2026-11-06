@@ -1,0 +1,19 @@
+{
+  "dataset": "MSigDB Human Hallmark gene sets",
+  "release": "2026.1.Hs",
+  "source_page": "https://www.gsea-msigdb.org/gsea/msigdb/collections.jsp",
+  "release_index": "https://data.broadinstitute.org/gsea-msigdb/msigdb/release/2026.1.Hs/",
+  "identifier_type": "HGNC gene symbols",
+  "retrieved_at": "2026-08-12T05:18:00+09:00",
+  "files": [
+    {
+      "filename": "h.all.v2026.1.Hs.symbols.gmt",
+      "role": "fixed_pathway_catalog",
+      "url": "https://data.broadinstitute.org/gsea-msigdb/msigdb/release/2026.1.Hs/h.all.v2026.1.Hs.symbols.gmt",
+      "bytes": 48686,
+      "sha256": "eecaf6dad908334ae885406ec72bdc0646d8917588ed7c219fac92fc5363f596",
+      "gene_sets": 50,
+      "required": true
+    }
+  ]
+}

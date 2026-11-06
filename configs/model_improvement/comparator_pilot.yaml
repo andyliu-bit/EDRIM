@@ -1,0 +1,30 @@
+protocol: ModelComparatorCPU-v1
+claim_scope: engineering_pilot_no_performance_ranking
+data_root: ../bisurfgnn
+benchmark_config: configs/benchmark_bisurf_unclipped.yaml
+cell_config: configs/cell_context.yaml
+fold: 0
+seeds: [41, 42, 43, 44, 45]
+sampling_seed: 41
+sampling_salt: model-comparator-v1
+train_max_points: 900
+validation_max_points: 1800
+device: cpu
+threads: 2
+max_wall_seconds: 1800
+models: [bisurf_legacy, bisurf_mono_v2, ddprism_hallmark_observed_mono, combokr2_dense_minres]
+training:
+  epochs: 6
+  mono_epochs: 4
+  batch_size: 128
+  batch_surfaces: 16
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  gradient_clip: 1.0
+  min_delta: 0.00001
+combokr:
+  maxiter: 5
+  nystrom_tol: 0.1
+  hill_max_nfev: 100
+  braid_max_nfev: 100
+  kernel_gamma: 0.02

@@ -1,0 +1,32 @@
+protocol: CellInteractionDevelopment-v1
+protocol_document: docs/CELL_INTERACTION_PROTOCOL.md
+claim_scope: engineering_pilot_no_performance_ranking
+stage: development
+reference_run: runs/model_improvement/comparator_gpu_v2
+data_root: ../bisurfgnn
+benchmark_config: configs/benchmark_bisurf_unclipped.yaml
+cell_config: configs/cell_context.yaml
+fold: 0
+seeds: [41, 42, 43, 44, 45]
+sampling_seed: 41
+sampling_salt: model-comparator-gpu-v2
+preserve_partner_cell_support: true
+train_max_points: 18000
+validation_max_points: 9000
+device: cuda
+threads: 2
+max_wall_seconds: 3600
+report_prefix: cell_interaction_v1
+models: [bisurf_mono_v2, bisurf_late_cell_v2, bisurf_early_cell_v2]
+go_required_seeds: 4
+go_relative_improvement: 0.01
+training:
+  epochs: 40
+  mono_epochs: 0
+  batch_size: 512
+  evaluation_batch_size: 256
+  batch_surfaces: 64
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  gradient_clip: 1.0
+  min_delta: 0.00001

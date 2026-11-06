@@ -1,0 +1,52 @@
+{
+  "dataset": "NCI-ALMANAC",
+  "release": "Nov2017",
+  "source_page": "https://dtp.cancer.gov/ncialmanac/initializePage.do",
+  "retrieved_at": "2026-08-12T03:12:05+09:00",
+  "files": [
+    {
+      "filename": "ComboDrugGrowth_Nov2017.zip",
+      "role": "dose_response_records",
+      "url": "https://wiki.nci.nih.gov/download/attachments/338237347/ComboDrugGrowth_Nov2017.zip?version=1&modificationDate=1510057275000&api=v2",
+      "fallback_url": "https://web.archive.org/web/20260725172102id_/https://wiki.nci.nih.gov/download/attachments/338237347/ComboDrugGrowth_Nov2017.zip",
+      "bytes": 85966226,
+      "sha256": "69367a8b654908ebf70a752548c8d240fda2b751336eff0241a5986628696100",
+      "zip_member": "ComboDrugGrowth_Nov2017.csv",
+      "zip_member_bytes": 615194859,
+      "zip_member_crc32": "75bef2df",
+      "required": true
+    },
+    {
+      "filename": "ComboCompoundSet.sdf",
+      "role": "almanac_compound_structures",
+      "url": "https://wiki.nci.nih.gov/download/attachments/338237347/ComboCompoundSet.sdf?api=v2",
+      "bytes": 412707,
+      "sha256": "368a4af6dcd8ede8ee3a12126ff9076db3b5ed3c13c245c16e58ed772535b8d2",
+      "required": true
+    },
+    {
+      "filename": "ComboCompoundNames_all.txt",
+      "role": "compound_names",
+      "url": "https://wiki.nci.nih.gov/download/attachments/338237347/ComboCompoundNames_all.txt?api=v2",
+      "bytes": 50857,
+      "sha256": "8fdf7ccfc52cd9d0d7e3c106423c65fe319365c1b0837fa40a1cb6d68e9fa01b",
+      "required": true
+    },
+    {
+      "filename": "ALMANAC_DataFields.txt",
+      "role": "official_data_dictionary",
+      "url": "https://wiki.nci.nih.gov/download/attachments/338237347/ALMANAC_DataFields.txt?api=v2",
+      "bytes": 3880,
+      "sha256": "89c5f9e49989a5dc68c3c0a4665b310fd749d7a7a5e3f69608e171865b2e7bda",
+      "required": true
+    },
+    {
+      "filename": "nsc_smiles.csv",
+      "role": "official_nci_structure_fallback",
+      "url": "https://wiki.nci.nih.gov/download/attachments/155844992/nsc_smiles.csv?api=v2",
+      "bytes": 17330377,
+      "sha256": "170a8890562e75a272903309a642bb928a76168879e4344f2b39ec8b9c3203e8",
+      "required": true
+    }
+  ]
+}

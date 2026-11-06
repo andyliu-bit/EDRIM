@@ -1,0 +1,52 @@
+# One-new-scaffold benchmark on the D1 unclipped endpoint.
+#
+# Identical to configs/benchmark_one_new_scaffold.yaml except for the source
+# records, the output locations, and the endpoint declaration. The protocol,
+# split seed, fold count, clustering rule, similarity threshold, fingerprint
+# settings, and the learned-baseline budget are unchanged, so the resulting
+# split must match the frozen clipped split exactly: split construction reads
+# response availability masks and structures, never response values.
+#
+# Evidence and reasoning: docs/ENDPOINT_DECISION.md.
+
+project_root: ..
+
+nci_processed_dir: data/processed/nci_almanac_unclipped
+cell_processed_dir: data/processed/cellminer
+output_dir: data/processed/one_new_scaffold_benchmark_unclipped
+runs_dir: runs/one_new_scaffold_unclipped
+
+protocol: OneNewScaffoldAnchored-v1
+information_setting: observed_monotherapy_anchored
+
+# D1: the upper truncation is removed. response_clipped_high still marks points
+# above the reference bound, so clipping-state stratification remains available.
+endpoint: unclipped_PERCENTGROWTHNOTZ_over_100
+endpoint_decision_status: frozen_d1
+
+folds: 5
+validation_offset: 1
+split_seed: 41
+
+similarity_threshold: 0.70
+fingerprint_radius: 2
+fingerprint_bits: 2048
+
+# The largest recorded value across responses and monotherapy anchors on this
+# release is 2.2638. The declared bound keeps a unit error (a forgotten division
+# by 100) rejected while admitting the untruncated ratio.
+response_upper_bound: 3.0
+
+learned_morgan:
+  reference_mode: observed_hsa
+  hidden_dim: 256
+  dropout: 0.10
+  batch_surfaces: 128
+  max_epochs: 200
+  min_epochs: 10
+  patience: 20
+  min_delta: 0.00001
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  gradient_clip: 1.0
+  seeds: [41, 42, 43]

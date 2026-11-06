@@ -1,0 +1,68 @@
+# CrossScreenAdditive-v1 (docs/CROSS_SCREEN_ADDITIVE_V1_PROTOCOL.md): output-map diagnostic.
+# Everything below "frozen settings" must equal experiments/model_improvement/cross_screen_mono/configs/gpu.yaml
+# (checked by run_additive.py before launch).
+protocol: CrossScreenAdditive-v1-gpu
+protocol_document: docs/CROSS_SCREEN_ADDITIVE_V1_PROTOCOL.md
+claim_scope: engineering_pilot_no_performance_ranking
+max_wall_seconds: 3600
+minimum_free_gpu_bytes: 4294967296
+jobs:
+# first: the anchored CS seed 41 rerun must reproduce the saved CrossScreenMono-v1 predictions
+- information: cs
+  model: bisurf_mono_v2
+  seed: 41
+  run: control
+  saved_predictions: runs/model_improvement/cross_screen_mono_v1/gpu_r2/cs/bisurf_mono_v2_seed_41_primary/predictions.csv
+- information: cs
+  model: bisurf_additive_v2
+  seed: 41
+  run: primary
+- information: cs
+  model: bisurf_additive_v2
+  seed: 42
+  run: primary
+- information: cs
+  model: bisurf_additive_v2
+  seed: 41
+  run: repeat
+- information: sp
+  model: bisurf_additive_v2
+  seed: 41
+  run: primary
+- information: sp
+  model: bisurf_additive_v2
+  seed: 42
+  run: primary
+# frozen settings
+reference_run: runs/model_improvement/comparator_gpu_v2
+data_root: ../bisurfgnn
+benchmark_config: configs/benchmark_bisurf_unclipped.yaml
+cell_config: configs/cell_context.yaml
+fold: 0
+sampling_seed: 41
+sampling_salt: model-comparator-gpu-v2
+preserve_partner_cell_support: true
+train_max_points: 18000
+validation_max_points: 9000
+device: cuda
+threads: 2
+auxiliary_weight: 0.5
+training:
+  epochs: 40
+  mono_epochs: 0
+  batch_size: 512
+  evaluation_batch_size: 256
+  batch_surfaces: 128
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  gradient_clip: 1.0
+  min_delta: 1.0e-05
+xgboost:
+  learning_rate: 0.03
+  max_trees: 3000
+  eval_every: 50
+  subsample: 0.8
+  colsample: 0.8
+  drug_pca: 16
+  cell_pca: 16
+  threads: 6

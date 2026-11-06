@@ -1,0 +1,38 @@
+seed: 17
+device: cpu
+output_dir: runs/smoke
+
+data:
+  kind: synthetic
+  num_drugs: 16
+  num_cells: 6
+  num_surfaces: 48
+  dose_levels: [0.0, 0.35, 0.8, 1.4]
+  atom_feature_dim: 12
+  cell_feature_dim: 6
+  min_atoms: 5
+  max_atoms: 11
+  pathway_nodes: 8
+  noise_std: 0.01
+
+split:
+  train_fraction: 0.70
+  validation_fraction: 0.15
+
+model:
+  hidden_dim: 32
+  graph_layers: 2
+  attention_heads: 4
+  dropout: 0.0
+  dose_frequencies: 4
+
+training:
+  epochs: 5
+  batch_size: 64
+  learning_rate: 0.002
+  weight_decay: 0.0001
+  monotherapy_weight: 0.25
+  variance_weight: 0.02
+  num_workers: 0
+  grad_clip_norm: 2.0
+

@@ -1,0 +1,37 @@
+{
+ "name": "DDPRiSM-MeasuredMono-v1 smoke (full S1 data, capped epochs; not a result)",
+ "seed": 41,
+ "device": "cuda",
+ "max_wall_hours": 0.15,
+ "combo": {
+  "batch_size": 1024,
+  "learning_rate": 0.01,
+  "max_epochs": 2,
+  "threshold": 0.0005,
+  "patience_lr": 10,
+  "patience_es": 20,
+  "lr_factor": 0.1,
+  "alpha": 1.0,
+  "beta": 0.5,
+  "gamma": 0.75,
+  "precision": 2,
+  "swap_augment": true
+ },
+ "mono": {
+  "batch_size": 1024,
+  "learning_rate": 0.01,
+  "max_epochs": 3,
+  "threshold": 0.0005,
+  "patience_lr": 10,
+  "patience_es": 20,
+  "lr_factor": 0.1,
+  "alpha": 1.0,
+  "beta": 0.5,
+  "gamma": 0.75,
+  "precision": 2,
+  "internal_val_fraction": 0.125
+ },
+ "hyperparameter_sources": {
+  "note": "identical to formal_config.json except max_epochs (mono 3, combo 2) and max_wall_hours 0.15"
+ }
+}

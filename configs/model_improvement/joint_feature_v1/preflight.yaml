@@ -1,0 +1,102 @@
+protocol: JointFeature-v1-preflight
+protocol_document: docs/JOINT_FEATURE_V1_PROTOCOL.md
+claim_scope: engineering_pilot_no_performance_ranking
+reference_run: C:/LHZ/research/bisurfgnn-model-experiments/runs/model_improvement/comparator_gpu_v2
+data_root: C:/LHZ/research/bisurfgnn
+benchmark_config: configs/benchmark_bisurf_unclipped.yaml
+cell_config: configs/cell_context.yaml
+fold: 0
+seeds:
+- 41
+sampling_seed: 41
+sampling_salt: model-comparator-gpu-v2
+preserve_partner_cell_support: true
+train_max_points: 18000
+validation_max_points: 9000
+device: cuda
+threads: 2
+max_wall_seconds: 10800
+rmse_eps_fraction: 0.01
+training:
+  epochs: 0
+  mono_epochs: 0
+  batch_size: 512
+  evaluation_batch_size: 256
+  batch_surfaces: 128
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  gradient_clip: 1.0
+  min_delta: 1.0e-05
+joint_tabm:
+  d_embedding: 16
+  k: 32
+  width: 256
+  blocks: 2
+  dropout: 0.1
+joint_opt:
+  pleall:
+    lr: 0.001
+    weight_decay: 0.0001
+    batch_surfaces: 64
+    gradient_clip: 1.0
+    eval_every: 100
+    steps: 600
+  plelin:
+    lr: 0.001
+    weight_decay: 0.0001
+    batch_surfaces: 64
+    gradient_clip: 1.0
+    eval_every: 100
+    steps: 600
+numeric_arch:
+  tabm:
+    d_embedding: 16
+    k: 32
+    width: 256
+    blocks: 2
+    dropout: 0.1
+corrector:
+  b1:
+    dropout: 0.3
+    stage2:
+      lr: 0.0001
+      weight_decay: 0.01
+      batch_surfaces: 64
+      gradient_clip: 1.0
+      eval_every: 100
+      steps: 300
+    stage3:
+      lr: 1.0e-05
+      weight_decay: 0.01
+      batch_surfaces: 64
+      gradient_clip: 1.0
+      eval_every: 100
+      steps: 200
+  b2:
+    dropout: 0.1
+    stage2:
+      lr: 0.0003
+      weight_decay: 0.001
+      batch_surfaces: 64
+      gradient_clip: 1.0
+      eval_every: 100
+      steps: 3000
+    stage3:
+      lr: 3.0e-05
+      weight_decay: 0.001
+      batch_surfaces: 64
+      gradient_clip: 1.0
+      eval_every: 100
+      steps: 1000
+numeric_source_runs:
+  '41': C:/LHZ/research/bisurfgnn-model-experiments/runs/model_improvement/numeric_surface_v1/snap_c78b22d69f15/runs/model_improvement/screen_num
+  '42': C:/LHZ/research/bisurfgnn-model-experiments/runs/model_improvement/numeric_surface_v1/snap_c78b22d69f15/runs/model_improvement/screen_num
+  '43': C:/LHZ/research/bisurfgnn-model-experiments/runs/model_improvement/numeric_surface_v1/snap_ae92da88a034/runs/model_improvement/stab_num
+  '44': C:/LHZ/research/bisurfgnn-model-experiments/runs/model_improvement/numeric_surface_v1/snap_ae92da88a034/runs/model_improvement/stab_num
+  '45': C:/LHZ/research/bisurfgnn-model-experiments/runs/model_improvement/numeric_surface_v1/snap_ae92da88a034/runs/model_improvement/stab_num
+models:
+- bisurf_joint_pleall
+- bisurf_joint_plelin
+- bisurf_jointcorr_b1
+- bisurf_joint_pleall_rmse
+report_prefix: jointfeat_v1_preflight

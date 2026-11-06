@@ -1,0 +1,100 @@
+protocol: NCI60-Pretrain-v1-transfer-screen_g1
+claim_scope: development_evidence_only
+reference_run: C:/LHZ/research/bisurfgnn-model-experiments/runs/model_improvement/comparator_gpu_v2
+data_root: C:/LHZ/research/bisurfgnn
+benchmark_config: configs/benchmark_bisurf_unclipped.yaml
+cell_config: configs/cell_context.yaml
+fold: 0
+sampling_seed: 41
+sampling_salt: model-comparator-gpu-v2
+preserve_partner_cell_support: true
+train_max_points: 18000
+validation_max_points: 9000
+device: cuda
+threads: 2
+oof_folds: 4
+xgb_prior:
+  eta: 0.05
+  depth: 6
+  trees: 600
+  threads: 6
+xgb_correction:
+  eta: 0.05
+  depth: 4
+  trees: 300
+  threads: 6
+xgb_head:
+  eta: 0.03
+  depth: 10
+  min_child: 1
+  max_trees: 3000
+  eval_every: 50
+  threads: 6
+net_prior:
+  g1:
+    hidden: 64
+    dropout: 0.1
+    lr: 0.001
+    weight_decay: 0.0001
+    steps: 3000
+    batch: 512
+  g2:
+    hidden: 128
+    dropout: 0.3
+    lr: 0.001
+    weight_decay: 0.001
+    steps: 3000
+    batch: 512
+mlp_correction:
+  hidden: 64
+  dropout: 0.1
+  lr: 0.001
+  weight_decay: 0.0001
+  steps: 2000
+  batch: 512
+tabm_head:
+  k: 32
+  width: 256
+  blocks: 2
+  dropout: 0.1
+  lr: 0.001
+  weight_decay: 0.0001
+  steps: 6000
+  batch_surfaces: 64
+  eval_every: 100
+pretrained:
+  g1:
+    path: runs/model_improvement/nci60_pretrain_v1/pretrain_g1/pretrained_encoders.pt
+    sha256: 591bd21a4904c6dc126f87cee2ceff12f96297133db6757a1557d81983d6e5e7
+  g2:
+    path: runs/model_improvement/nci60_pretrain_v1/pretrain_g2/pretrained_encoders.pt
+    sha256: c63471f1abb6570ae44437c98bed1e817f28145ae23c9d73cf1159dddc285c40
+jobs:
+- - D_gnn_g1
+  - 41
+  - 1
+  - control
+- - D_gnn_pt_g1
+  - 41
+  - 1
+  - primary
+- - D_gnn_pt_g1
+  - 42
+  - 1
+  - primary
+- - D_gnn_pt_g1
+  - 41
+  - 0
+  - primary
+- - D_gnn_pt_g1
+  - 42
+  - 0
+  - primary
+- - D_gnn_pt_g1
+  - 41
+  - 1
+  - repeat
+control_reference:
+  D_gnn_g1: runs/model_improvement/sparse_mono_v1/snap_921bdc09d9a4/runs/model_improvement/screen1
+  D_gnn_g2: runs/model_improvement/sparse_mono_v1/snap_921bdc09d9a4/runs/model_improvement/screen1
+  D_morgan_g2: runs/model_improvement/sparse_mono_v1/snap_1e79403e10f6/runs/model_improvement/screen2

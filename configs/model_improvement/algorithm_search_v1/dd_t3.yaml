@@ -1,0 +1,28 @@
+﻿protocol: AlgorithmSearch-v1-comparator-dd_t3
+protocol_document: docs/ALGORITHM_SEARCH_V1_PROTOCOL.md
+claim_scope: engineering_pilot_no_performance_ranking
+data_root: ../bisurfgnn
+benchmark_config: configs/benchmark_bisurf_unclipped.yaml
+cell_config: configs/cell_context.yaml
+fold: 0
+seeds: [41, 42]
+sampling_seed: 41
+sampling_salt: model-comparator-gpu-v2
+preserve_partner_cell_support: true
+train_max_points: 18000
+validation_max_points: 9000
+device: cuda
+threads: 2
+max_wall_seconds: 5400
+report_prefix: algosearch_v1_dd_t3
+models: [ddprism_hallmark_observed_mono]
+training:
+  epochs: 80
+  mono_epochs: 80
+  batch_size: 512
+  evaluation_batch_size: 256
+  batch_surfaces: 128
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  gradient_clip: 1.0
+  min_delta: 0.00001

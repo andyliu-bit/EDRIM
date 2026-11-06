@@ -1,0 +1,26 @@
+# Warm PairOut development falsifier on the D1 unclipped endpoint.
+#
+# Identical to configs/warm_pairout_probe.yaml except for the source shards, the
+# output location, and the endpoint declaration. The assignment rule, bins,
+# validation bin, split seed, and warm-information constraints are unchanged, so
+# the pair assignment must reproduce the clipped-endpoint assignment exactly:
+# pairs are sorted and binned without reading response values.
+#
+# Evidence and reasoning: docs/ENDPOINT_DECISION.md.
+
+project_root: ..
+
+source_shard_dir: data/processed/one_new_scaffold_benchmark_unclipped/learned_point_shards
+output_dir: data/processed/warm_pairout_development_unclipped
+
+protocol: WarmPairOutDevelopment-v1
+source_protocol: OneNewScaffoldAnchored-v1
+endpoint: unclipped_PERCENTGROWTHNOTZ_over_100
+endpoint_decision_status: frozen_d1
+
+base_folds: [0, 1, 2, 3, 4]
+pair_bins: 5
+validation_bin: 0
+split_seed: 41
+
+require_drug_cell_seen: true

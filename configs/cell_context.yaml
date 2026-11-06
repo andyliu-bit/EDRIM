@@ -1,0 +1,27 @@
+cellminer_zip: data/raw/cellminer/nci60_RNA__RNA_seq_composite_expression.zip
+cellminer_manifest: data/raw_manifests/cellminer_rnaseq.json
+hallmark_gmt: data/raw/msigdb/h.all.v2026.1.Hs.symbols.gmt
+hallmark_manifest: data/raw_manifests/msigdb_hallmark.json
+cell_aliases: data/mappings/nci60_cell_aliases.json
+processed_dir: data/processed/cellminer
+almanac_cells: data/processed/nci_almanac/cells.csv
+
+expression_member: output/html/RNA__RNA_seq_composite_expression.html
+expected_gene_rows: 23808
+expected_expression_cells: 60
+
+pathway_top_k: 3
+min_pathway_genes: 10
+clip_value: 5.0
+std_epsilon: 1.0e-6
+
+cellout_smoke:
+  seed: 29
+  validation_groups: 6
+  test_groups: 6
+  max_train_surfaces: 24
+  max_test_surfaces: 12
+  hidden_dim: 32
+  graph_layers: 2
+  attention_heads: 4
+  dose_frequencies: 4

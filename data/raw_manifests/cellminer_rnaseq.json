@@ -1,0 +1,46 @@
+{
+  "dataset": "CellMiner NCI-60 RNA-seq composite expression",
+  "release": "CellMiner-2.15-2025-09-11-HG19",
+  "portal_release": "2025.3",
+  "portal_release_date": "2025-09-21",
+  "source_page": "https://discover.nci.nih.gov/cellminer/loadDownload.do",
+  "metadata_page": "https://discover.nci.nih.gov/cellminer/datasets.do",
+  "value_scale": "log2(FPKM + 1)",
+  "retrieved_at": "2026-08-12T05:10:00+09:00",
+  "files": [
+    {
+      "filename": "nci60_RNA__RNA_seq_composite_expression.zip",
+      "role": "nci60_rnaseq_composite_expression",
+      "url": "https://discover.nci.nih.gov/cellminer/download/processeddataset/nci60_RNA__RNA_seq_composite_expression.zip",
+      "bytes": 12227542,
+      "sha256": "fe0bc1f8fda562c5ebf016c90f29e18bdf3145eebe8fda01365eb03d2200dff1",
+      "required": true,
+      "zip_members": [
+        {
+          "filename": "output/html/RNA__RNA_seq_composite_expression.html",
+          "bytes": 21196229,
+          "crc32": "0e9da2c0",
+          "role": "machine_read_expression_matrix"
+        },
+        {
+          "filename": "output/RNA__RNA_seq_composite_expression.xls",
+          "bytes": 29035008,
+          "crc32": "d41711a1",
+          "role": "official_spreadsheet_copy"
+        },
+        {
+          "filename": "output/documentation/NCI60_CELL_LINE_METADATA.xls",
+          "bytes": 54272,
+          "crc32": "bb63843b",
+          "role": "official_cell_line_metadata"
+        }
+      ],
+      "embedded_metadata": {
+        "cellminer_database_version": "2.15",
+        "human_genome_version": "HG-19",
+        "date": "09-11-2025",
+        "value_description": "Fragments per kilobase per million reads log2(FPKM + 1)"
+      }
+    }
+  ]
+}

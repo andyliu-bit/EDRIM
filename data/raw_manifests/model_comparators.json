@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "sources": {
+    "ddprism": {
+      "repo": "GIST-CSBL/DD-PRiSM",
+      "commit": "8d9c5d5172ccfa76a389cd21d96a86e6dbc4ad11",
+      "license": "CC-BY-NC-SA-4.0",
+      "files": [
+        {
+          "file": "00_CombinationtherapyUtils.ipynb",
+          "url": "https://raw.githubusercontent.com/GIST-CSBL/DD-PRiSM/8d9c5d5172ccfa76a389cd21d96a86e6dbc4ad11/00_CombinationtherapyUtils.ipynb",
+          "sha256": "e7f627a3e9020455de6a6c2c842bc9b2678856796394e98b8e9c4af3b2efed76",
+          "bytes": 12114
+        },
+        {
+          "file": "00_MonotherapyUtils.ipynb",
+          "url": "https://raw.githubusercontent.com/GIST-CSBL/DD-PRiSM/8d9c5d5172ccfa76a389cd21d96a86e6dbc4ad11/00_MonotherapyUtils.ipynb",
+          "sha256": "64f12fa5fc5ec6f0b4198ef9b08d607db08678e7f4d61eac50a002e5d940515e",
+          "bytes": 17337
+        },
+        {
+          "file": "00_Utils.ipynb",
+          "url": "https://raw.githubusercontent.com/GIST-CSBL/DD-PRiSM/8d9c5d5172ccfa76a389cd21d96a86e6dbc4ad11/00_Utils.ipynb",
+          "sha256": "eb71a2046f302c89768fbc483e209694e0e7afe2fb3f7be8591f49580ccea550",
+          "bytes": 7030
+        },
+        {
+          "file": "01_Preprocessing.ipynb",
+          "url": "https://raw.githubusercontent.com/GIST-CSBL/DD-PRiSM/8d9c5d5172ccfa76a389cd21d96a86e6dbc4ad11/01_Preprocessing.ipynb",
+          "sha256": "cf057501680104cc8f6da3f3ceb8d18a48547db4afb930fc985ecb34617939b8",
+          "bytes": 40625
+        },
+        {
+          "file": "04_CombinationTherapyModel_Training.ipynb",
+          "url": "https://raw.githubusercontent.com/GIST-CSBL/DD-PRiSM/8d9c5d5172ccfa76a389cd21d96a86e6dbc4ad11/04_CombinationTherapyModel_Training.ipynb",
+          "sha256": "878dda2adfa65d020d06db47d0c87c168ec7e7963fe883b320e7a7d2831d97a9",
+          "bytes": 18300
+        },
+        {
+          "file": "CC-BY-NC-SA-4.0",
+          "url": "https://raw.githubusercontent.com/GIST-CSBL/DD-PRiSM/8d9c5d5172ccfa76a389cd21d96a86e6dbc4ad11/CC-BY-NC-SA-4.0",
+          "sha256": "58032a8173195237068ab02d429948bc3233d8e6858d1b9ddfdc47e3bbc3d847",
+          "bytes": 20844
+        },
+        {
+          "file": "README.md",
+          "url": "https://raw.githubusercontent.com/GIST-CSBL/DD-PRiSM/8d9c5d5172ccfa76a389cd21d96a86e6dbc4ad11/README.md",
+          "sha256": "a989173bcdf84ed186f395a9637e169ded8653d152b89a5dde85d1f5d5f1eafe",
+          "bytes": 6755
+        }
+      ]
+    },
+    "combokr2": {
+      "repo": "aalto-ics-kepaco/comboKR2.0",
+      "commit": "0e26676de5fe996c34c2e641d465d5c04a6263ac",
+      "license": "MIT",
+      "files": [
+        {
+          "file": "comboKR2/__init__.py",
+          "url": "https://raw.githubusercontent.com/aalto-ics-kepaco/comboKR2.0/0e26676de5fe996c34c2e641d465d5c04a6263ac/comboKR2/__init__.py",
+          "sha256": "88e99aca76d134de1f877518a3c767c1929a1510d93ba201bfdcf6f46c2f680b",
+          "bytes": 32
+        },
+        {
+          "file": "comboKR2/braid_surface_model_for_fit.py",
+          "url": "https://raw.githubusercontent.com/aalto-ics-kepaco/comboKR2.0/0e26676de5fe996c34c2e641d465d5c04a6263ac/comboKR2/braid_surface_model_for_fit.py",
+          "sha256": "acf824c03406478cf77928a561da428a24e3046e5e0a4fc101d40ae94cc857f3",
+          "bytes": 19561
+        },
+        {
+          "file": "comboKR2/helpers.py",
+          "url": "https://raw.githubusercontent.com/aalto-ics-kepaco/comboKR2.0/0e26676de5fe996c34c2e641d465d5c04a6263ac/comboKR2/helpers.py",
+          "sha256": "f892a361ed899ebb51a5fc6f1f66b938e3772844716497148068c1651eb7250e",
+          "bytes": 2553
+        },
+        {
+          "file": "comboKR2/scalable_comboKR.py",
+          "url": "https://raw.githubusercontent.com/aalto-ics-kepaco/comboKR2.0/0e26676de5fe996c34c2e641d465d5c04a6263ac/comboKR2/scalable_comboKR.py",
+          "sha256": "25dd8f672fb458672defa9f4d37d6a108a1446592ffc2aa3ea16090a960641c0",
+          "bytes": 64054
+        },
+        {
+          "file": "demo.py",
+          "url": "https://raw.githubusercontent.com/aalto-ics-kepaco/comboKR2.0/0e26676de5fe996c34c2e641d465d5c04a6263ac/demo.py",
+          "sha256": "ced08c98915551d863cd1aa8b32820eee1f18fd4b52c8591c3f66b9f6d662ed5",
+          "bytes": 5128
+        },
+        {
+          "file": "requirements.txt",
+          "url": "https://raw.githubusercontent.com/aalto-ics-kepaco/comboKR2.0/0e26676de5fe996c34c2e641d465d5c04a6263ac/requirements.txt",
+          "sha256": "27d3db5784dab1bf010abdce6c2b59137160abfe7cfbee45adeaba0f6506b0b7",
+          "bytes": 142
+        },
+        {
+          "file": "environment.yml",
+          "url": "https://raw.githubusercontent.com/aalto-ics-kepaco/comboKR2.0/0e26676de5fe996c34c2e641d465d5c04a6263ac/environment.yml",
+          "sha256": "458235b77e32f1a5e6a4b95c73369c093355255956b1b4fd91fc9217cfcf9deb",
+          "bytes": 266
+        },
+        {
+          "file": "pyproject.toml",
+          "url": "https://raw.githubusercontent.com/aalto-ics-kepaco/comboKR2.0/0e26676de5fe996c34c2e641d465d5c04a6263ac/pyproject.toml",
+          "sha256": "dbdcedb3018383d25d28dfd5b7522798d166f5e3fabf4d5829fe99993e856f2a",
+          "bytes": 654
+        },
+        {
+          "file": "LICENSE",
+          "url": "https://raw.githubusercontent.com/aalto-ics-kepaco/comboKR2.0/0e26676de5fe996c34c2e641d465d5c04a6263ac/LICENSE",
+          "sha256": "f158a88165a350acaf14ce3f4fea46d3f7d1bb16f0c6af0feb1857396e08932f",
+          "bytes": 1063
+        },
+        {
+          "file": "README.md",
+          "url": "https://raw.githubusercontent.com/aalto-ics-kepaco/comboKR2.0/0e26676de5fe996c34c2e641d465d5c04a6263ac/README.md",
+          "sha256": "e350fd304860425c875247316a489a07bff7c4c6b6f037f4e593938b34f44051",
+          "bytes": 2397
+        }
+      ]
+    },
+    "rlscore": {
+      "repo": "aatapa/RLScore",
+      "commit": "e2ffc503c83d8a9d2187518d02043017d7f0d820",
+      "license": "MIT",
+      "files": [
+        {
+          "file": "rlscore/learner/cg_kron_rls.py",
+          "url": "https://raw.githubusercontent.com/aatapa/RLScore/e2ffc503c83d8a9d2187518d02043017d7f0d820/rlscore/learner/cg_kron_rls.py",
+          "sha256": "29622a423c564f8d00af31998aaa3c624f777467400f84d8a06ccb88ee948a6d",
+          "bytes": 10959
+        },
+        {
+          "file": "LICENCE.TXT",
+          "url": "https://raw.githubusercontent.com/aatapa/RLScore/e2ffc503c83d8a9d2187518d02043017d7f0d820/LICENCE.TXT",
+          "sha256": "db5109264f5d4da584657707dbdb112945dbffff0c0ff33edca87244b38d623c",
+          "bytes": 1180
+        }
+      ]
+    }
+  }
+}

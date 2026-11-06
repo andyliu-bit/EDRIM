@@ -1,0 +1,52 @@
+{
+  "version": "1.0.0",
+  "description": "Frozen, non-fuzzy mapping rules from NCI-ALMANAC cell labels to CellMiner NCI-60 RNA-seq columns.",
+  "normalization": {
+    "unicode": "NFKC",
+    "remove_unicode_control_characters": true,
+    "collapse_whitespace": true,
+    "case": "upper"
+  },
+  "panel_prefixes": {
+    "Breast Cancer": "BR",
+    "CNS Cancer": "CNS",
+    "Colon Cancer": "CO",
+    "Leukemia": "LE",
+    "Melanoma": "ME",
+    "Non-Small Cell Lung Cancer": "LC",
+    "Ovarian Cancer": "OV",
+    "Prostate Cancer": "PR",
+    "Renal Cancer": "RE"
+  },
+  "aliases": {
+    "MDA-MB-231/ATCC": "BR:MDA-MB-231"
+  },
+  "excluded_almanac_cells": {
+    "MDA-MB-468": {
+      "biological_cell_id": "BR:MDA-MB-468",
+      "reason": "No column exists in the frozen CellMiner RNA-seq matrix; ME:MDA-N is a distinct cell line and must not be used as an alias."
+    }
+  },
+  "expression_only_cells": {
+    "ME:MDA-N": {
+      "reason": "Present in the frozen CellMiner matrix but absent from NCI-ALMANAC Nov2017 combination records."
+    }
+  },
+  "known_source_alias_groups": [
+    {
+      "normalized_name": "SF-539",
+      "source_labels": ["SF-539", "SF-539\u001a"],
+      "biological_cell_id": "CNS:SF-539",
+      "reason": "The control-character variant shares PANELNBR=12 and CELLNBR=16 and is not a separate biological cell."
+    }
+  ],
+  "lineage_groups": {
+    "ME:M14": "LINEAGE:M14_MDA-MB-435",
+    "ME:MDA-MB-435": "LINEAGE:M14_MDA-MB-435",
+    "CNS:SNB-19": "LINEAGE:SNB-19_U251",
+    "CNS:U251": "LINEAGE:SNB-19_U251",
+    "OV:OVCAR-8": "LINEAGE:OVCAR-8_NCI-ADR-RES",
+    "OV:NCI/ADR-RES": "LINEAGE:OVCAR-8_NCI-ADR-RES"
+  },
+  "lineage_policy": "Known shared-origin families are indivisible in the strict CellOut protocol; all unlisted cells form singleton groups."
+}

@@ -1,0 +1,76 @@
+protocol: SparseMono-v1-screen1
+claim_scope: engineering_pilot_no_performance_ranking
+reference_run: C:/LHZ/research/bisurfgnn-model-experiments/runs/model_improvement/comparator_gpu_v2
+data_root: C:/LHZ/research/bisurfgnn
+benchmark_config: configs/benchmark_bisurf_unclipped.yaml
+cell_config: configs/cell_context.yaml
+fold: 0
+sampling_seed: 41
+sampling_salt: model-comparator-gpu-v2
+preserve_partner_cell_support: true
+train_max_points: 18000
+validation_max_points: 9000
+device: cuda
+threads: 2
+seeds:
+- 41
+- 42
+budgets:
+- 1
+- 0
+pipelines:
+- A_ref
+- B_xgb
+- C_tabm
+- D_gnn_g1
+- D_gnn_g2
+oof_folds: 4
+xgb_prior:
+  eta: 0.05
+  depth: 6
+  trees: 600
+  threads: 6
+xgb_correction:
+  eta: 0.05
+  depth: 4
+  trees: 300
+  threads: 6
+xgb_head:
+  eta: 0.03
+  depth: 10
+  min_child: 1
+  max_trees: 3000
+  eval_every: 50
+  threads: 6
+net_prior:
+  g1:
+    hidden: 64
+    dropout: 0.1
+    lr: 0.001
+    weight_decay: 0.0001
+    steps: 3000
+    batch: 512
+  g2:
+    hidden: 128
+    dropout: 0.3
+    lr: 0.001
+    weight_decay: 0.001
+    steps: 3000
+    batch: 512
+mlp_correction:
+  hidden: 64
+  dropout: 0.1
+  lr: 0.001
+  weight_decay: 0.0001
+  steps: 2000
+  batch: 512
+tabm_head:
+  k: 32
+  width: 256
+  blocks: 2
+  dropout: 0.1
+  lr: 0.001
+  weight_decay: 0.0001
+  steps: 6000
+  batch_surfaces: 64
+  eval_every: 100

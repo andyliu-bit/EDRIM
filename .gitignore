@@ -1,0 +1,46 @@
+# Credentials and local environments
+.env
+.env.*
+!.env.example
+.venv/
+.venvs/
+venv/
+
+# Python and build outputs
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+
+# Research data, checkpoints, logs and derived artifacts
+data/raw/
+data/interim/
+data/processed/
+data/external/
+runs/
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.pickle
+*.parquet
+*.h5
+*.hdf5
+*.sqlite
+*.sqlite3
+*.db
+*.zip
+*.tar
+*.gz
+*.log
+
+# Manuscripts and local working files
+papers/
+reports/
+ppt-output/
+*.tmp
+.DS_Store
+Thumbs.db
